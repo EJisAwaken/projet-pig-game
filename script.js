@@ -119,7 +119,4 @@ diceRoll[0].addEventListener("click", changeDice1);
 diceRoll[1].addEventListener("click", changeDice2);
 
 
-// Fonction qui va envoyé la reponse vers total
-
-
 
