@@ -3,7 +3,7 @@ let etat = document.querySelectorAll(".etat");
 let scoreT = document.querySelectorAll(".scoreT");
 let recommencer = document.querySelector("#newGame");
 let  diceRoll= document.querySelectorAll(".imgRollDice");
-let hold = document.querySelectorAll(".imgHold");
+let hold = document.querySelectorAll(".imgHold img");
 let currentN = document.querySelectorAll(".currentNumber");
 let dices = ["Illustration/one.png", "Illustration/two.png", "Illustration/tree.png",
 "Illustration/four.png", "Illustration/five.png", "Illustration/six.png"];
@@ -23,27 +23,45 @@ function changeDice1() {
                 setInterval(function () {
                     dice[0].classList.remove("animDice");
                 }, 1200);
-                pointC1 = pointC1 + index;
-                currentN[0].innerHTML = pointC1+1;
+                pointC1 = pointC1 + index+1;
+                currentN[0].innerHTML = pointC1;
                 if (random1 ===0){
                     pointC1 = 0;
-                    currentN[0].innerHTML =pointC1;
+                    currentN[0].innerHTML=pointC1;
+                    diceRoll[0].addEventListener("click", function () {
+                        alert("c'est pas votre tour");
+                        pointC1 = 0;
+                        currentN[0].innerHTML=pointC1;
+                        diceRoll[0].style.display ="none";
+                        diceRoll[1].style.display ="block";
+                    })
                 }
 
-                if (pointC1 >=20){
+                recommencer.addEventListener("click", function () {
+                    pointC1 = 0;
+                    currentN[0].innerHTML=pointC1;
+                    scoreT[0].innerHTML=pointC1;
+                    etat[0].style.display = "none";
+                    etat[1].style.display = "none";
+
+                });
+
+                hold[0].addEventListener("click", function () {
+                    pointT1 += pointC1;
+                    scoreT[0].innerHTML=pointT1;
+                    pointC1 = 0;
+                    currentN[0].innerHTML=pointC1;
+
+                });
+
+                if (pointT1 >=20){
                     etat[0].innerHTML = "(Vous avez gagner)";
                     etat[0].style.color = "green";
                     etat[1].innerHTML = "(Vous avez perdu)";
                     etat[1].style.color = "red";
                 }
-
-                recommencer.addEventListener("click", function () {
-                    pointC1 = 0;
-                    currentN[0].innerHTML =pointC1;
-                })
-
+                console.log(pointT1);
             }
-
         })
 }
 
@@ -58,27 +76,43 @@ function changeDice2() {
                 setInterval(function () {
                     dice[1].classList.remove("animDice");
                 }, 1200);
-                pointC2 = pointC2 + index;
-                currentN[1].innerHTML = pointC2+1;
+                pointC2 = pointC2 + index+1;
+                currentN[1].innerHTML = pointC2;
                 if (random2 ===0){
                     pointC2 = 0;
                     currentN[1].innerHTML =pointC2;
-                }
-
-                if (pointC2 >=20){
-                    etat[1].innerHTML = "(Vous avez gagner)";
-                    etat[1].style.color = "green";
-                    etat[0].innerHTML = "(Vous avez perdu)";
-                    etat[0].style.color = "red";
+                    diceRoll[1].addEventListener("click", function () {
+                        alert("c'est pas votre tour");
+                        pointC2 = 0;
+                        currentN[1].innerHTML = pointC2;
+                        diceRoll[1].style.display ="none";
+                        diceRoll[0].style.display ="block";
+                    })
                 }
 
                 recommencer.addEventListener("click", function () {
                     pointC2 = 0;
                     currentN[1].innerHTML =pointC2;
-                })
+                    scoreT[1].innerHTML=pointC2;
+                    etat[0].style.display = "none";
+                    etat[1].style.display = "none";
 
+                });
+
+                hold[1].addEventListener("click", function () {
+                    pointT2 += pointC2;
+                    scoreT[1].innerHTML=pointT2;
+                    pointC2 = 0;
+                    currentN[1].innerHTML=pointC2;
+                });
+
+                if (pointT2 >=20){
+                    etat[1].innerHTML = "(Vous avez gagner)";
+                    etat[1].style.color = "green";
+                    etat[0].innerHTML = "(Vous avez perdu)";
+                    etat[0].style.color = "red";
+                }
             }
-
         })
 }
 diceRoll[0].addEventListener("click", changeDice1);

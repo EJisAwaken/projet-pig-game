@@ -113,10 +113,10 @@ body{
     animation: light 2s linear;
 }
 
-@media screen and (max-width: 1100px)  {
+@media screen and (max-height: 800px)  {
     #plateau{
         width: 900px;
-        height: 100vh;
+        height: 80vh;
         margin: 20px auto;
         display: grid;
         grid-template-columns: auto auto;
