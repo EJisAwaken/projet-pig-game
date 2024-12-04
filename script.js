@@ -54,7 +54,7 @@ function changeDice1() {
 
                 });
 
-                if (pointT1 >=20){
+                if (pointT1 >=100){
                     etat[0].innerHTML = "(Vous avez gagner)";
                     etat[0].style.color = "green";
                     etat[1].innerHTML = "(Vous avez perdu)";
